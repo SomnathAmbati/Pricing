@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fictional Product Pricing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            margin: 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+            overflow-x: auto; /* Add this line for horizontal scrolling if necessary */
+        }
+
+        .pricing-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0.1px 3px 8px rgb(0 0 0 / 0.2);
+            padding: 2em;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            min-width: 250px; /* Adjust as needed */
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card h2 {
+            color: #333;
+        }
+
+        .pricing-card button {
+            background-color: #333;
+            color: #fff;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .toggle {
+            margin-top: 10px;
+            background-color: #eee; /* Add the background color here */
+            padding: 10px;
+            width: fit-content;
+            border-radius: 8px;
+            padding-left: 2%;
+            padding-right: 2%;
+            margin: auto; /* Center the toggle */
+            text-align: center; /* Center the text inside the toggle */
+        }
+
+        .message {
+            color: rgb(1, 22, 1);
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fictional Product Pricing</h1>
+    </header>
+
+    <section>
+        <div class="pricing-container">
+            <div class="pricing-card" id="basic-plan">
+                <h2>Basic Plan</h2>
+                <p>$19.99/month</p>
+                <button onclick="toggleMessage('Basic-plan')">Select</button>
+            </div>
+
+            <div class="pricing-card" id="pro-plan">
+                <h2>Pro Plan</h2>
+                <p>$39.99/month</p>
+                <button onclick="toggleMessage('Pro-plan')">Select</button>
+            </div>
+
+            <div class="pricing-card" id="premium-plan">
+                <h2>Premium Plan</h2>
+                <p>$59.99/month</p>
+                <button onclick="toggleMessage('Premium-plan')">Select</button>
+            </div>
+        </div>
+        <div class="toggle" id="toggle"></div>
+    </section>
+
+    <script>
+        function toggleMessage(planId) {
+            // Get the pricing card element by ID
+            var pricingCard = document.getElementById(planId);
+            
+            // Toggle the message inside the toggle div
+            var toggleDiv = document.getElementById('toggle');
+            var message = toggleDiv.querySelector('.message');
+            
+            if (!message) {
+                message = document.createElement('p');
+                message.className = 'message';
+                toggleDiv.appendChild(message);
+            }
+            message.textContent = planId + ' is Plan selected! ';
+            
+            // Hide the message after 3000 milliseconds (3 seconds)
+            setTimeout(function () {
+                message.textContent = '';
+                toggle.textContent = " ";
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
